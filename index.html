@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Hesap Task</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gajraj+One&family=Gloock&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /*  */
+        #full {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #notHesap {
+            text-align: center;
+            background-color: #9DC08B;
+            padding: 50px 50px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.075), 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+            ;
+        }
+
+        input,
+        button {
+            padding: 10px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #EDF1D6;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.075), 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+            ;
+            animation: fade 0.5s ease 0.6s backwards;
+            transition: opacity 0.3s;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="full">
+        <div id="notHesap">
+            <h2 style="font-family:'Gloock', serif; font-size: 40px; color:#40513B">Not Ortalaması Hesaplama</h2>
+            <p style="font-family:'Roboto', sans-serif; font-size: 15px; font-weight: bold; color:#609966">'Hesapla'
+                butonuna basınca yıl sonu notunu hesaplar</p>
+            <input type="number" id="vize" placeholder="Vize Notunu Giriniz">
+            <input type="number" id="final" placeholder="Final Notunu Giriniz">
+            <input type="number" id="proje" placeholder="Proje Notu Giriniz">
+            <button onclick="notHesapla()" id="hesapla"> Hesapla </button>
+            <hr>
+            <p id="sonuc" style="font-family:'Roboto', sans-serif; font-size: 25px; font-weight: bold; color:#40513B">
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function notHesapla() {
+            let vizeNotu = document.getElementById('vize').value
+            let finalNotu = document.getElementById('final').value
+            let projeNotu = document.getElementById('proje').value
+
+            let ortalama = vizeNotu * 0.3 + finalNotu * 0.5 + projeNotu * 0.2
+            if (ortalama > 0 && ortalama < 40)
+            document.getElementById('sonuc').innerHTML = 'Not Ortalamanız : <span style="color: red;">FF</span>';
+            else if (ortalama >= 40 && ortalama < 50)
+                document.getElementById('sonuc').innerHTML = 'Not Ortalamanız : DD'
+            else if (ortalama >= 50 && ortalama < 70)
+                document.getElementById('sonuc').innerHTML = 'Not Ortalamanız : CC'
+            else if (ortalama >= 70 && ortalama < 85)
+                document.getElementById('sonuc').innerHTML = 'Not Ortalamanız : BB'
+            else if (ortalama >= 85 && ortalama <= 100)
+                document.getElementById('sonuc').innerHTML = 'Not Ortalamanız : AA'
+
+            vize.value = '';
+            vize.focus()
+
+            final.value = '';
+            final.focus()
+
+            proje.value = '';
+            proje.focus()
+        }
+    </script>
+
+</body>
+
+</html>
